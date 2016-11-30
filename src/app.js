@@ -1,19 +1,7 @@
-import Database from './database';
+import Employee from './models/employee';
+import Student from './models/student';
 
-
-class Scooter extends Database{
-  constructor(){
-    super();
-    this.createTable().
-    addColumn('id', lf.Type.INTEGER).
-    addColumn('first_name', lf.Type.STRING).
-    addColumn('last_name', lf.Type.STRING).
-    addPrimaryKey(['id'],true);
-  }
-}
-
-
-var g = new Scooter();
+var g = new Student();
 g.put({
   'first_name':'raj',
   'last_name': 'kumar'

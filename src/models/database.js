@@ -9,7 +9,7 @@ export default class Database {
     if(this.dblink){
       return this.dblink;
     }
-    this.dblink = this.sBuilder.connect({'storeType':lf.schema.DataStoreType.INDEXED_DB});
+    this.dblink = this.sBuilder.connect({'storeType':lf.schema.DataStoreType.MEMORY});
     return this.dblink;
   }
 
