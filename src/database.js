@@ -6,19 +6,27 @@ export default class Database {
   }
 
   getConnection(){
-    this.sBuilder.connect().then(function(db) {
-      this.db_ = db;
+    console.log('1. under getConnect');
+    this.sBuilder.connect({'storeType':lf.schema.DataStoreType.INDEXED_DB}).
+    then(function(db){
+      console.log('2. under getConnect');
+      if(this.db_!=null){
+        return this.db_;
+      }
+      this.db_=db;
       return db;
     }.bind(this));
   }
 
+
   put(doc){
-     this.getConnection().then(function(){
-       var table = this.db_.getSchema().table(this.constructor.name);
-       this.db_.insertOrReplace().into(table).values([table.createRow(doc)]).exec();
-     }.bind(this));
-
-
+    console.log("I am out buddy: "+this.getConnection());
+    return;
+    this.getConnection().
+    then(function() {
+      var table = this.db_.getSchema().table(this.constructor.name);
+      return this.db_.insertOrReplace().into(table).values([table.createRow(doc)]).exec();
+    }.bind(this));
   }
 
   createTable(){

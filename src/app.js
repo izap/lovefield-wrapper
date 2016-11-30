@@ -25,13 +25,7 @@ class Employee extends Database{
 var e = new Student();
 
 e.put({
-  'id': 77,
-  'first_name': "Raman",
-  'last_name': "Kumar"
-});
-
-e.put({
-  'id': 78,
+  'id': 79,
   'first_name': "Raman",
   'last_name': "Kumar"
 });
