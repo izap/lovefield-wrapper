@@ -1,0 +1,35 @@
+{
+  "name": "lovefield-wrapper",
+  "version": "1.0.0",
+  "description": "Data access layer to make it more like ORM",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarunjangra/lovefield-wrapper.git"
+  },
+  "keywords": [
+    "SQL",
+    "Lovefield",
+    "Wrapper"
+  ],
+  "author": "Tarun Jangra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarunjangra/lovefield-wrapper/issues"
+  },
+  "homepage": "https://github.com/tarunjangra/lovefield-wrapper#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "lovefield": "^2.1.10"
+  }
+}
