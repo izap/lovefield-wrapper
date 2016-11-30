@@ -1,31 +1,35 @@
 import Database from './database';
 
-class Student extends Database{
+
+class Scooter extends Database{
   constructor(){
     super();
     this.createTable().
     addColumn('id', lf.Type.INTEGER).
     addColumn('first_name', lf.Type.STRING).
     addColumn('last_name', lf.Type.STRING).
-    addPrimaryKey(['id']);
+    addPrimaryKey(['id'],true);
   }
 }
-/*
-class Employee extends Database{
-  constructor(){
-    super();
-    this.createTable().
-    addColumn('id', lf.Type.INTEGER).
-    addColumn('first_name', lf.Type.STRING).
-    addColumn('last_name', lf.Type.STRING).
-    addPrimaryKey(['id']);
-  }
-}*/
 
-var e = new Student();
 
-e.put({
-  'id': 79,
-  'first_name': "Raman",
-  'last_name': "Kumar"
+var g = new Scooter();
+g.put({
+  'first_name':'raj',
+  'last_name': 'kumar'
+}).put({
+  'first_name':'Raman',
+  'last_name': 'kumar'
+}).put({
+  'first_name':'raj',
+  'last_name': 'kumar'
+}).put({
+  'first_name':'raj',
+  'last_name': 'kumar'
+}).put({
+  'first_name':'raj',
+  'last_name': 'kumar'
+}).put({
+  'first_name':'raj',
+  'last_name': 'kumar'
 });

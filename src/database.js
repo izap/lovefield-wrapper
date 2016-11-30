@@ -2,31 +2,24 @@ import lf from 'lovefield';
 
 export default class Database {
   constructor(){
-    this.sBuilder = lf.schema.create('izap');
+    this.sBuilder = lf.schema.create('izapdbNew');
   }
 
   getConnection(){
-    console.log('1. under getConnect');
-    this.sBuilder.connect({'storeType':lf.schema.DataStoreType.INDEXED_DB}).
-    then(function(db){
-      console.log('2. under getConnect');
-      if(this.db_!=null){
-        return this.db_;
-      }
-      this.db_=db;
-      return db;
-    }.bind(this));
+    if(this.dblink){
+      return this.dblink;
+    }
+    this.dblink = this.sBuilder.connect({'storeType':lf.schema.DataStoreType.INDEXED_DB});
+    return this.dblink;
   }
 
-
   put(doc){
-    console.log("I am out buddy: "+this.getConnection());
-    return;
-    this.getConnection().
-    then(function() {
-      var table = this.db_.getSchema().table(this.constructor.name);
-      return this.db_.insertOrReplace().into(table).values([table.createRow(doc)]).exec();
-    }.bind(this));
+      this.getConnection().
+      then(function(db){
+        var table = db.getSchema().table(this.constructor.name);
+        return db.insertOrReplace().into(table).values([table.createRow(doc)]).exec();
+      }.bind(this));
+      return this;
   }
 
   createTable(){
