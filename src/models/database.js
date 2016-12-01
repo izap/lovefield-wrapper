@@ -2,15 +2,20 @@ import lf from 'lovefield';
 
 export default class Database {
   constructor(){
-    this.sBuilder = lf.schema.create('izapdbNew');
+    if(window.giSchema){
+      this.sBuilder= window.giSchema;
+      return;
+    }
+    this.sBuilder = lf.schema.create('PriyaInHospital');
+    window.giSchema=this.sBuilder;
   }
 
   getConnection(){
-    if(this.dblink){
-      return this.dblink;
+    if(window.giDbLink){
+       return window.giDbLink
     }
-    this.dblink = this.sBuilder.connect({'storeType':lf.schema.DataStoreType.MEMORY});
-    return this.dblink;
+    window.giDbLink = this.sBuilder.connect({'storeType':lf.schema.DataStoreType.INDEXED_DB});
+    return window.giDbLink;
   }
 
   put(doc){
